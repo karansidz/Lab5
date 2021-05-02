@@ -9,6 +9,7 @@ let readTextButton =document.getElementsByTagName("button")[2];
 let imageInput = document.getElementById("image-input");
 let generateMeme = document.getElementById("generate-meme");
 let context = canvas.getContext("2d");
+let volume = document.getElementsByTagName("input")[3];
 let voiceList = [];
 let readButtonVolume = 1;
 
@@ -48,7 +49,7 @@ generateMeme.addEventListener('submit', (event) => {
   context.fillStyle = "white";
   context.font = "30px serif";
   context.textAlign = "center";
-  context.fillText(bottomText.value, 130, 370);
+  context.fillText(bottomText.value, 130, 380);
   context.fillText(topText.value, 130, 30);
 
   clearButton.disabled = false;
@@ -64,7 +65,7 @@ clearButton.addEventListener('click', () => {
   context.clearRect(0, 0, canvas.width, canvas.height);
 });
 
-/*
+
 speechSynthesis.addEventListener('voiceschanged', () => {
   voiceList = speechSynthesis.getVoices();
   let voiceChoice = document.getElementById("voice-selection");
@@ -84,9 +85,9 @@ speechSynthesis.addEventListener('voiceschanged', () => {
   }
 
 });
-*/
 
-/*
+
+
 readTextButton.addEventListener('click', () => {
   let topText = document.getElementById("text-top");
   let bottomText = document.getElementById("text-bottom");
@@ -98,9 +99,9 @@ readTextButton.addEventListener('click', () => {
   speechSynthesis.speak(utteranceBottom);
 
 });
-*/
 
-/*
+
+
 volume.addEventListener('input', () => {
   let iconImage = document.getElementsByTagName('img')[0];
   readButtonVolume = (volume.value / 100)
@@ -122,7 +123,7 @@ volume.addEventListener('input', () => {
   }
 
 });
-*/
+
 
 /**
  * Takes in the dimensions of the canvas and the new image, then calculates the new

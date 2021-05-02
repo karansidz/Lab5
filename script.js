@@ -22,6 +22,7 @@ img.addEventListener('load', () => {
   generateButton.disabled = false;
   clearButton.disabled = true;
   readTextButton.disabled = true;
+  voiceChoice.disabled = true;
 
   let dimension = getDimmensions(canvas.width, canvas.height, img.width, img.height);
 
@@ -55,6 +56,7 @@ generateMeme.addEventListener('submit', (event) => {
 
   clearButton.disabled = false;
   readTextButton.disabled = false;
+  voiceChoice.disabled = false;
 });
 
 clearButton.addEventListener('click', () => {

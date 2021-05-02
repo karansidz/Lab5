@@ -47,7 +47,8 @@ imageInput.addEventListener('change', () => {
   img.alt = alternate;
 });
 
-generateMeme.addEventListener('submit', () => {
+generateMeme.addEventListener('submit', (event) => {
+  event.preventDefault(); // by default submit will refresh the page. Preventing the same
   let topText = document.getElementById("text-top");
   let bottomText = document.getElementById("text-bottom");
 

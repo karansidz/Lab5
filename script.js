@@ -2,15 +2,121 @@
 
 const img = new Image(); // used to load image from <input> and draw to canvas
 
+let context = canvas.getContext("2d");
+let generateButton = document.getElementById("button")[0];
+let clearButton = document.getElementById("button")[1];
+let readTextButton = document.getElementById("button")[2];
+let imageInput = document.getElementById("image-input");
+let generateMeme = document.getElementById("generate-meme");
+let voiceList = [];
+let readButtonVolume = 1;
+
+
 // Fires whenever the img object loads a new image (such as with img.src =)
 img.addEventListener('load', () => {
   // TODO
+
+  context.clearRect(0, 0, canvas.width, canvas.height);
+  generateButton.disabled = false;
+  clearButton.disabled = true;
+  readTextButton.disabled = true;
+
+  let dimension = getDimmensions(canvas.width, canvas.height, img.width, img.height);
+
+  context.fillStyle = "black";
+  context.fillRect(0, 0, canvas.width, canvas.height);
+  context.drawImage(img, dimension.startX, dimension.startY, dimension.width, dimension.height);
 
   // Some helpful tips:
   // - Fill the whole Canvas with black first to add borders on non-square images, then draw on top
   // - Clear the form when a new image is selected
   // - If you draw the image to canvas here, it will update as soon as a new image is selected
 });
+
+imageInput.addEventListener('change', () => {
+  let imagePath = URL.createObjectURL(imageInput);
+  let alternate = imagePath.split("/").pop();
+  img.src = path;
+  img.alt = alternate;
+});
+
+generateMeme.addEventListener('submit', () => {
+  let topText = document.getElementById("text-top");
+  let bottomText = document.getElementById("text-bottom");
+
+  context.fillStyle = "red";
+  context.font = "20px serif";
+  context.textAlign = "center";
+  context.fillText(bottomText.value, 50, 190);
+  context.fillText(topText.value, 50, 10);
+
+  clearButton.disabled = false;
+  readTextButton.disabled = false;
+});
+
+clearButton.addEventListener('click', () => {
+  let topText = document.getElementById("text-top");
+  let bottomText = document.getElementById("text-bottom");
+  topText.value = "";
+  bottomText.value = "";
+
+  context.clearRect(0, 0, canvas.width, canvas.height);
+});
+
+speechSynthesis.addEventListener('voiceschanged', () => {
+  voiceList = speechSynthesis.getVoices();
+  let voiceChoice = document.getElementById("voice-selection");
+  
+  for (var i = 0; i < voiceList.length ; i++){
+    var option = document.createElement("option");
+    option.textContent = voices[i].name + ' (' + voices[i].lang + ')';
+
+    if(voices[i].default) {
+      option.textContent +- " DEFAULT";
+    }
+
+  option.setAttribute("data.lang", voices[i].lang);
+  option.setAttribute("data.name", voices[i].name);
+  voiceChoice.appendChild(option);
+
+  }
+
+});
+
+readTextButton.addEventListener('click', () => {
+  let topText = document.getElementById("text-top");
+  let bottomText = document.getElementById("text-bottom");
+  let utteranceTop = new SpeechSynthesisUtterance(topText.value);
+  let utteranceBottom = new SpeechSynthesisUtterance(bottomText.value);
+  utteranceTop.volume = readButtonVolume;
+  utteranceBottom.volume = readButtonVolume;
+  speechSynthesis.speak(utteranceTop);
+  speechSynthesis.speak(utteranceBottom);
+
+});
+
+volume.addEventListener('input', () => {
+  let iconImage = document.getElementsByTagName('img')[0];
+  readButtonVolume = (volume.value / 100)
+  if (volume.value == 0){
+    iconImage.src = "icons/volume-level-0.svg";
+    iconImage.alt = "Volume Level 0: 0"
+  }
+  else if (volume.value >= 1 && volume.value <= 33){
+    iconImage.src = "icons/volume-level-1.svg";
+    iconImage.alt = "Volume Level 1: 1 - 33";
+  }
+  else if (volume.value >= 34 && volume.value <= 66){
+    iconImage.src = "icons/volume-level-2.svg";
+    iconImage.alt = "Volume Level 1: 34 - 66";
+  }
+  else if (volume.value >= 67 && volume.value <= 100){
+    iconImage.src = "icons/volume-level-3.svg";
+    iconImage.alt = "Volume Level 1: 67 - 100";
+  }
+
+});
+
 
 /**
  * Takes in the dimensions of the canvas and the new image, then calculates the new

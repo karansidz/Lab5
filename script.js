@@ -2,6 +2,7 @@
 
 const img = new Image(); // used to load image from <input> and draw to canvas
 
+const canvas = document.getElementById("user-image");
 let context = canvas.getContext("2d");
 let generateButton = document.getElementById("button")[0];
 let clearButton = document.getElementById("button")[1];

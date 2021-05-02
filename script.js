@@ -16,7 +16,7 @@ let readButtonVolume = 1;
 // Fires whenever the img object loads a new image (such as with img.src =)
 img.addEventListener('load', () => {
   // TODO
-  context.clearRect(0, 0, 400, 400);
+  context.clearRect(0, 0, canvas.width, canvas.height);
 
   let topText = document.getElementById("text-top");
   let bottomText = document.getElementById("text-bottom");
@@ -28,10 +28,10 @@ img.addEventListener('load', () => {
   clearButton.disabled = true;
   readTextButton.disabled = true;
 
-  let dimension = getDimmensions(400, 400, img.width, img.height);
+  let dimension = getDimmensions(canvas.width, canvas.height, img.width, img.height);
 
   context.fillStyle = "black";
-  context.fillRect(0, 0, 400, 400);
+  context.fillRect(0, 0, canvas.width, canvas.height);
   context.drawImage(img, dimension.startX, dimension.startY, dimension.width, dimension.height);
 
   // Some helpful tips:
@@ -52,7 +52,7 @@ generateMeme.addEventListener('submit', (event) => {
   let topText = document.getElementById("text-top");
   let bottomText = document.getElementById("text-bottom");
 
-  context.fillStyle = "black";
+  context.fillStyle = "white";
   context.font = "30px serif";
   context.textAlign = "center";
   context.fillText(bottomText.value, 130, 350);

@@ -17,7 +17,6 @@ let readButtonVolume = 1;
 img.addEventListener('load', () => {
   // TODO
   context.clearRect(0, 0, 400, 400);
-  window.alert("I am here");
 
   let topText = document.getElementById("text-top");
   let bottomText = document.getElementById("text-bottom");

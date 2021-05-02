@@ -3,12 +3,12 @@
 const img = new Image(); // used to load image from <input> and draw to canvas
 
 let canvas = document.getElementById("user-image");
-let context = canvas.getContext("2d");
 let generateButton = document.getElementsByTagName("button")[0];
 let clearButton = document.getElementsByTagName("button")[1];
-let readTextButton = document.getElementsByTagName("button")[2];
+let readTextButton =document.getElementsByTagName("button")[2];
 let imageInput = document.getElementById("image-input");
 let generateMeme = document.getElementById("generate-meme");
+let context = canvas.getContext("2d");
 let voiceList = [];
 let readButtonVolume = 1;
 

@@ -47,8 +47,8 @@ generateMeme.addEventListener('submit', () => {
   context.fillStyle = "red";
   context.font = "20px serif";
   context.textAlign = "center";
-  context.fillText(bottomText.value, 50, 190);
-  context.fillText(topText.value, 50, 10);
+  context.fillText(bottomText.value, 130, 350);
+  context.fillText(topText.value, 130, 50);
 
   clearButton.disabled = false;
   readTextButton.disabled = false;

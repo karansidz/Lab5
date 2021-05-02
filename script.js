@@ -23,7 +23,7 @@ img.addEventListener('load', () => {
 
   let dimension = getDimmensions(canvas.width, canvas.height, img.width, img.height);
 
-  context.fillStyle = "black";
+  context.fillStyle = "yellow";
   context.fillRect(0, 0, canvas.width, canvas.height);
   context.drawImage(img, dimension.startX, dimension.startY, dimension.width, dimension.height);
 

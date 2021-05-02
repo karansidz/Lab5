@@ -11,7 +11,8 @@ let generateMeme = document.getElementById("generate-meme");
 let context = canvas.getContext("2d");
 let volume = document.getElementsByTagName("input")[3];
 let voiceList = [];
-let readButtonVolume = 1;
+let language = "en-US";
+let readButtonVolume = 0.5;
 
 
 // Fires whenever the img object loads a new image (such as with img.src =)
@@ -86,15 +87,27 @@ speechSynthesis.addEventListener('voiceschanged', () => {
 
 });
 
-
+voiceChoice.addEventListener('change', () => {
+  let langChoice = voiceChoice.selectedOptions[0].getAttribute("data-name");
+  for(i = 0; i < voiceList.length; i++){
+    if (voiceList[i].name == langChoice) {
+      language = langChoice;
+    }
+  }
+});
 
 readTextButton.addEventListener('click', () => {
   let topText = document.getElementById("text-top");
   let bottomText = document.getElementById("text-bottom");
   let utteranceTop = new SpeechSynthesisUtterance(topText.value);
   let utteranceBottom = new SpeechSynthesisUtterance(bottomText.value);
+
   utteranceTop.volume = readButtonVolume;
+  utteranceTop.lang = language;
+
   utteranceBottom.volume = readButtonVolume;
+  utteranceBottom.lang = language;
+
   speechSynthesis.speak(utteranceTop);
   speechSynthesis.speak(utteranceBottom);
 

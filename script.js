@@ -17,13 +17,6 @@ let readButtonVolume = 1;
 img.addEventListener('load', () => {
   // TODO
   context.clearRect(0, 0, canvas.width, canvas.height);
-
-  let topText = document.getElementById("text-top");
-  let bottomText = document.getElementById("text-bottom");
-
-  topText.value = "";
-  bottomText.value = "";
-
   generateButton.disabled = false;
   clearButton.disabled = true;
   readTextButton.disabled = true;
@@ -55,8 +48,8 @@ generateMeme.addEventListener('submit', (event) => {
   context.fillStyle = "white";
   context.font = "30px serif";
   context.textAlign = "center";
-  context.fillText(bottomText.value, 130, 350);
-  context.fillText(topText.value, 130, 50);
+  context.fillText(bottomText.value, 130, 370);
+  context.fillText(topText.value, 130, 30);
 
   clearButton.disabled = false;
   readTextButton.disabled = false;

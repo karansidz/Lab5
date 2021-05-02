@@ -70,6 +70,7 @@ clearButton.addEventListener('click', () => {
   context.clearRect(0, 0, canvas.width, canvas.height);
 });
 
+/*
 speechSynthesis.addEventListener('voiceschanged', () => {
   voiceList = speechSynthesis.getVoices();
   let voiceChoice = document.getElementById("voice-selection");
@@ -89,7 +90,9 @@ speechSynthesis.addEventListener('voiceschanged', () => {
   }
 
 });
+*/
 
+/*
 readTextButton.addEventListener('click', () => {
   let topText = document.getElementById("text-top");
   let bottomText = document.getElementById("text-bottom");
@@ -101,7 +104,9 @@ readTextButton.addEventListener('click', () => {
   speechSynthesis.speak(utteranceBottom);
 
 });
+*/
 
+/*
 volume.addEventListener('input', () => {
   let iconImage = document.getElementsByTagName('img')[0];
   readButtonVolume = (volume.value / 100)
@@ -123,7 +128,7 @@ volume.addEventListener('input', () => {
   }
 
 });
-
+*/
 
 /**
  * Takes in the dimensions of the canvas and the new image, then calculates the new

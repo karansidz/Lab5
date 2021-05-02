@@ -17,6 +17,7 @@ let readButtonVolume = 1;
 img.addEventListener('load', () => {
   // TODO
   context.clearRect(0, 0, 400, 400);
+  window.alert("I am here");
 
   let topText = document.getElementById("text-top");
   let bottomText = document.getElementById("text-bottom");
@@ -42,7 +43,7 @@ img.addEventListener('load', () => {
 
 imageInput.addEventListener('change', () => {
   let imagePath = URL.createObjectURL(imageInput.files[0]);
-  let alternate = imagePath.split("/").pop();
+  let alternate = imagePath.split("\\").pop();
   img.src = imagePath;
   img.alt = alternate;
 });

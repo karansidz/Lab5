@@ -34,7 +34,7 @@ img.addEventListener('load', () => {
 });
 
 imageInput.addEventListener('change', () => {
-  let imagePath = URL.createObjectURL(imageInput);
+  let imagePath = URL.createObjectURL(imageInput.files[0]);
   let alternate = imagePath.split("/").pop();
   img.src = path;
   img.alt = alternate;

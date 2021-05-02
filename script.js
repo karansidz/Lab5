@@ -73,14 +73,14 @@ speechSynthesis.addEventListener('voiceschanged', () => {
   
   for (var i = 0; i < voiceList.length ; i++){
     var option = document.createElement("option");
-    option.textContent = voices[i].name + ' (' + voices[i].lang + ')';
+    option.textContent = voiceList[i].name + ' (' + voiceList[i].lang + ')';
 
-    if(voices[i].default) {
+    if(voiceList[i].default) {
       option.textContent +- " DEFAULT";
     }
 
-  option.setAttribute("data.lang", voices[i].lang);
-  option.setAttribute("data.name", voices[i].name);
+  option.setAttribute("data.lang", voiceList[i].lang);
+  option.setAttribute("data.name", voiceList[i].name);
   voiceChoice.appendChild(option);
 
   }

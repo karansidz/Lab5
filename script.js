@@ -2,7 +2,7 @@
 
 const img = new Image(); // used to load image from <input> and draw to canvas
 
-const canvas = document.getElementById("user-image");
+let canvas = document.getElementById("user-image");
 let context = canvas.getContext("2d");
 let generateButton = document.getElementById("button")[0];
 let clearButton = document.getElementById("button")[1];
@@ -16,16 +16,22 @@ let readButtonVolume = 1;
 // Fires whenever the img object loads a new image (such as with img.src =)
 img.addEventListener('load', () => {
   // TODO
+  context.clearRect(0, 0, 400, 400);
 
-  context.clearRect(0, 0, canvas.width, canvas.height);
+  let topText = document.getElementById("text-top");
+  let bottomText = document.getElementById("text-bottom");
+
+  topText.value = "";
+  bottomText.value = "";
+
   generateButton.disabled = false;
   clearButton.disabled = true;
   readTextButton.disabled = true;
 
-  let dimension = getDimmensions(canvas.width, canvas.height, img.width, img.height);
+  let dimension = getDimmensions(400, 400, img.width, img.height);
 
-  context.fillStyle = "yellow";
-  context.fillRect(0, 0, canvas.width, canvas.height);
+  context.fillStyle = "black";
+  context.fillRect(0, 0, 400, 400);
   context.drawImage(img, dimension.startX, dimension.startY, dimension.width, dimension.height);
 
   // Some helpful tips:
@@ -45,8 +51,8 @@ generateMeme.addEventListener('submit', () => {
   let topText = document.getElementById("text-top");
   let bottomText = document.getElementById("text-bottom");
 
-  context.fillStyle = "red";
-  context.font = "20px serif";
+  context.fillStyle = "black";
+  context.font = "30px serif";
   context.textAlign = "center";
   context.fillText(bottomText.value, 130, 350);
   context.fillText(topText.value, 130, 50);

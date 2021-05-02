@@ -12,7 +12,7 @@ let context = canvas.getContext("2d");
 let volume = document.getElementsByTagName("input")[3];
 let voiceList = [];
 let language = "en-US";
-let readButtonVolume = 0.5;
+let readButtonVolume = 1;
 
 
 // Fires whenever the img object loads a new image (such as with img.src =)
@@ -85,15 +85,16 @@ speechSynthesis.addEventListener('voiceschanged', () => {
 
   }
 
-});
-
-voiceChoice.addEventListener('change', () => {
-  let langChoice = voiceChoice.selectedOptions[0].getAttribute("data-name");
-  for(i = 0; i < voiceList.length; i++){
-    if (voiceList[i].name == langChoice) {
-      language = langChoice;
+  voiceChoice.disabled = false;
+  voiceChoice.addEventListener('change', () => {
+    let langChoice = voiceChoice.selectedOptions[0].getAttribute("data-name");
+    for(i = 0; i < voiceList.length; i++){
+      if (voiceList[i].name == langChoice) {
+        language = langChoice;
+      }
     }
-  }
+  });
+
 });
 
 readTextButton.addEventListener('click', () => {
